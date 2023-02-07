@@ -6,6 +6,8 @@ import Image from "next/image"
 import { Card, useNotification } from "web3uikit"
 import { ethers } from "ethers"
 import UpdateListingModal from "./UpdateListingModal"
+import styled from "styled-components"
+import { useDarkMode } from "../components/useDarkMode"
 
 const truncateStr = (fullStr, strLen) => {
     if (fullStr.length <= strLen) return fullStr
@@ -100,8 +102,32 @@ export default function NFTBox({ price, nftAddress, tokenId, marketplaceAddress,
         })
     }
 
+    const NFTCard = styled.button`
+        padding: 0;
+        color: #68738d;
+        fill: #68738d;
+        font-family: "Open Sans", sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        border-radius: 20px;
+        display: grid;
+        min-height: -webkit-fit-content;
+        min-height: -moz-fit-content;
+        min-height: fit-content;
+        padding: 11px;
+        position: relative;
+        width: 100%;
+        cursor: pointer;
+        background: ${({ theme }) => theme.background};
+        &:hover {
+            background: ${({ theme }) => theme.hover.background};
+        }
+        transition: all 3s ease-in-out;
+    `
+
     return (
-        <div>
+        <div className="m-2">
             <div>
                 {imageURI ? (
                     <div>
@@ -112,12 +138,13 @@ export default function NFTBox({ price, nftAddress, tokenId, marketplaceAddress,
                             nftAddress={nftAddress}
                             onClose={hideModal}
                         />
-                        <Card
+
+                        <NFTCard
                             title={tokenName}
                             description={tokenDescription}
                             onClick={handleCardClick}
                         >
-                            <div className="p-2">
+                            <div className="p-2 dark:text-gray-300">
                                 <div className="flex flex-col items-end gap-2">
                                     <div>#{tokenId}</div>
                                     <div className="italic text-sm">
@@ -134,7 +161,11 @@ export default function NFTBox({ price, nftAddress, tokenId, marketplaceAddress,
                                     </div>
                                 </div>
                             </div>
-                        </Card>
+                            <footer className="py-1 grid justify-items-center text-cyan-700 dark:text-cyan-400">
+                                <h2 className="font-bold">{tokenName}</h2>
+                                <span className="text-sm">{tokenDescription}</span>
+                            </footer>
+                        </NFTCard>
                     </div>
                 ) : (
                     <div>Loading...</div>

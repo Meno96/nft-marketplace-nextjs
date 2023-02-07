@@ -4,6 +4,10 @@ import Header from "../components/Header"
 import Head from "next/head"
 import { NotificationProvider } from "web3uikit"
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client"
+import { ThemeProvider } from "styled-components"
+import { GlobalStyles } from "../components/GlobalStyles"
+import { useDarkMode } from "../components/useDarkMode"
+import { lightTheme, darkTheme } from "../components/Themes"
 
 const client = new ApolloClient({
     cache: new InMemoryCache(),
@@ -11,21 +15,28 @@ const client = new ApolloClient({
 })
 
 function MyApp({ Component, pageProps }) {
+    const [theme, themeToggler] = useDarkMode()
+    const themeMode = theme === "light" ? lightTheme : darkTheme
     return (
-        <div>
+        <div className="h-[100vh]">
             <Head>
                 <title>NFT Marketplace</title>
                 <meta name="description" content="NFT Marketplace" />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/nft.png" />
             </Head>
-            <MoralisProvider initializeOnMount={false}>
-                <ApolloProvider client={client}>
-                    <NotificationProvider>
-                        <Header />
-                        <Component {...pageProps} />
-                    </NotificationProvider>
-                </ApolloProvider>
-            </MoralisProvider>
+            <ThemeProvider theme={themeMode}>
+                <>
+                    <GlobalStyles />
+                    <MoralisProvider initializeOnMount={false}>
+                        <ApolloProvider client={client}>
+                            <NotificationProvider>
+                                <Header theme={theme} themeToggler={themeToggler} />
+                                <Component {...pageProps} />
+                            </NotificationProvider>
+                        </ApolloProvider>
+                    </MoralisProvider>
+                </>
+            </ThemeProvider>
         </div>
     )
 }
