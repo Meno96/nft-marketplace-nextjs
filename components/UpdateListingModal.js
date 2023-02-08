@@ -1,8 +1,8 @@
 import { Modal, Input, useNotification } from "web3uikit"
-import { useState } from "react"
 import { useWeb3Contract } from "react-moralis"
 import nftMarketplaceAbi from "../constants/NftMarketplace.json"
 import { ethers } from "ethers"
+import { useState, useEffect } from "react"
 
 export default function UpdateListingModal({
     nftAddress,
@@ -42,6 +42,7 @@ export default function UpdateListingModal({
             isVisible={isVisible}
             onCancel={onClose}
             onCloseButtonPressed={onClose}
+            width={"400px"}
             onOk={() => {
                 updateListing({
                     onError: (error) => {

@@ -26,6 +26,7 @@
         "web3uikit": "^0.0.133"
     },
     "devDependencies": {
+        "alchemy-sdk": "^2.4.2",
         "autoprefixer": "^10.4.5",
         "dotenv": "^16.0.0",
         "eslint": "8.14.0",

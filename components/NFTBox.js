@@ -6,8 +6,6 @@ import Image from "next/image"
 import { Card, useNotification } from "web3uikit"
 import { ethers } from "ethers"
 import UpdateListingModal from "./UpdateListingModal"
-import styled from "styled-components"
-import { useDarkMode } from "../components/useDarkMode"
 
 const truncateStr = (fullStr, strLen) => {
     if (fullStr.length <= strLen) return fullStr
@@ -102,30 +100,6 @@ export default function NFTBox({ price, nftAddress, tokenId, marketplaceAddress,
         })
     }
 
-    const NFTCard = styled.button`
-        padding: 0;
-        color: #68738d;
-        fill: #68738d;
-        font-family: "Open Sans", sans-serif;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        border-radius: 20px;
-        display: grid;
-        min-height: -webkit-fit-content;
-        min-height: -moz-fit-content;
-        min-height: fit-content;
-        padding: 11px;
-        position: relative;
-        width: 100%;
-        cursor: pointer;
-        background: ${({ theme }) => theme.background};
-        &:hover {
-            background: ${({ theme }) => theme.hover.background};
-        }
-        transition: all 3s ease-in-out;
-    `
-
     return (
         <div className="m-2">
             <div>
@@ -139,7 +113,7 @@ export default function NFTBox({ price, nftAddress, tokenId, marketplaceAddress,
                             onClose={hideModal}
                         />
 
-                        <NFTCard
+                        <Card
                             title={tokenName}
                             description={tokenDescription}
                             onClick={handleCardClick}
@@ -161,11 +135,7 @@ export default function NFTBox({ price, nftAddress, tokenId, marketplaceAddress,
                                     </div>
                                 </div>
                             </div>
-                            <footer className="py-1 grid justify-items-center text-cyan-700 dark:text-cyan-400">
-                                <h2 className="font-bold">{tokenName}</h2>
-                                <span className="text-sm">{tokenDescription}</span>
-                            </footer>
-                        </NFTCard>
+                        </Card>
                     </div>
                 ) : (
                     <div>Loading...</div>

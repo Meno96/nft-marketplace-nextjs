@@ -9,7 +9,7 @@ import Toggle from "../components/Toggler"
 
 export default function Header(props) {
     return (
-        <nav className="px-5 border-b-[1px] shadow-xl">
+        <nav className="px-5 border-b-[1px] shadow-md">
             <div className="max-w-7xl mx-auto flex flex-row justify-between items-center">
                 <Link href="/">
                     <a className="flex flex-row items-center dark:hover:text-gray-100 hover:text-slate-500">
@@ -72,10 +72,14 @@ export default function Header(props) {
                             Sell NFT
                         </a>
                     </Link>
+                    <Link href="/account">
+                        <a className="mr-4 p-6 dark:hover:text-gray-100 hover:text-slate-500">
+                            Account
+                        </a>
+                    </Link>
                     <ConnectButton moralisAuth={false} />
+                    <Toggle theme={props.theme} toggleTheme={props.themeToggler} />
                 </div>
-
-                <Toggle theme={props.theme} toggleTheme={props.themeToggler} />
             </div>
         </nav>
     )
