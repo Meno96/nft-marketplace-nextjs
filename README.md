@@ -1,38 +1,133 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+    NextJS NFT Marketplace with TheGraph
+</h1>
 
-## Getting Started
+<br/>
 
-First, run the development server:
+<p align="center">
+<img src="./assets/GitHubImages/screen2.png" width="80%" alt="Hardhat NextJS Marketplace">
+</a>
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+<br/>
+
+This is a repo showing how to make an NFT Marketplace from scratch!
+
+<hr/>
+ 
+## 🗎&nbsp; Requirements
+- [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+    You'll know you did it right if you can run `git --version` and you see a response like `git version x.x.x`
+    
+- [Nodejs](https://nodejs.org/en/)
+
+    You'll know you've installed nodejs right if you can run: `node --version` and get an ouput like: `vx.x.x`
+- [Yarn](https://yarnpkg.com/getting-started/install) instead of `npm`
+   
+   You'll know you've installed yarn right if you can run: `yarn --version` and get an output like: `x.x.x`
+   
+   You might need to [install it with `npm`](https://classic.yarnpkg.com/lang/en/docs/install/) or `corepack`
+    
+## 🛠️&nbsp; How to run
+
+### Git clone the hardhat project repo
+
+- Clone the repo:
+    ```
+    git clone https://github.com/Meno96/nft-marketplace-hardhat.git
+    ```
+- Enter the directory:
+    ```
+    cd nft-marketplace-hardhat
+    ```
+- Install packages:
+    ```
+    yarn
+    ```
+
+### Deploy to goerli 
+
+After installing dependencies, deploy your contracts to goerli:
+
+```
+yarn hardhat deploy --network goerli
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Deploy your subgraph
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+cd ..
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Follow the instructions of the [README](https://github.com/Meno96/nft-marketplace-thegraph/blob/master/README.md) of that repo. 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Then, make a `.env` file and place your temporary query URL into it as `NEXT_PUBLIC_SUBGRAPH_URL`.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 4. Start your UI
 
-## Learn More
+Make sure that:
+  - In your `networkMapping.json` you have an entry for `NftMarketplace` on the goerli network. 
+  - You have a `NEXT_PUBLIC_SUBGRAPH_URL` in your `.env` file. 
+  
+- Clone this repo:
+    ```
+    cd ..
+    ```
+    ```
+    git clone https://github.com/Meno96/nft-marketplace-nextjs.git
+    ```
+- Enter the directory:
+    ```
+    cd nft-marketplace-nextjs
+    ```
+- Install packages:
+    ```
+    yarn
+    ```
+- Run UI:
+  ```
+  yarn dev
+  ```
+  
+## 🚀&nbsp; How it's suppose to work?
 
-To learn more about Next.js, take a look at the following resources:
+- Open [http://localhost:3000](http://localhost:3000) in your browser
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+     We will be redirected to this web page
+      
+<p align="center">
+<img src="./assets/GitHubImages/screen1.png" width="80%" alt="Hardhat NextJS Marketplace">
+</a>
+</p>
+      
+- Hit the `Connect` button, and you should see Metamask pop up.
+  
+    Now we will see that our wallet has been connected and we will be able to see the NFTs listed (connect to the Goerli network)
+    
+    <p align="center">
+    <img src="./assets/GitHubImages/screen2.png" width="80%" alt="Hardhat NextJS Marketplace">
+    </a>
+    </p>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    If we click on an NFT we own, we could update the listing price, instead if we click on an NFT we don't own, we could buy it
 
-## Deploy on Vercel
+- If we click on Sell NFT we will be redirected to this page:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    <p align="center">
+    <img src="./assets/GitHubImages/screen3.png" width="80%" alt="Hardhat NextJS Marketplace">
+    </a>
+    </p>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    where we could sell our NFTs and we could withdraw the proceeds in case we sell one of our NFTs.
+
+## 🏴‍☠️&nbsp; Other Parts
+
+You can find the backend part in [this repository](https://github.com/Meno96/nft-marketplace-hardhat.git)
+
+and TheGraph part in [this repository](https://github.com/Meno96/nft-marketplace-thegraph.git) 
+
+## 📫&nbsp; Have a question? Want to chat? 
+
+[LinkedIn](https://www.linkedin.com/in/daniele-menin/)
+
+[Instagram](https://www.instagram.com/danielemeno96/)
