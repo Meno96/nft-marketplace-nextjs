@@ -72,11 +72,6 @@ export default function Header(props) {
                             Sell NFT
                         </a>
                     </Link>
-                    <Link href="/account">
-                        <a className="mr-4 p-6 dark:hover:text-gray-100 hover:text-slate-500">
-                            Account
-                        </a>
-                    </Link>
                     <ConnectButton moralisAuth={false} />
                     <Toggle theme={props.theme} toggleTheme={props.themeToggler} />
                 </div>
