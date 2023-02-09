@@ -60,7 +60,7 @@ export default function NFTBox({ price, nftAddress, tokenId, marketplaceAddress,
             const requestURL = tokenURI.replace("ipfs://", "https://ipfs.io/ipfs/")
             const tokenURIResponse = await (await fetch(requestURL)).json()
             const imageURI = tokenURIResponse.image
-            const imageURIURL = imageURI.replace("ipfs://", "https://ipfs.io/ipfs/")
+            const imageURIURL = imageURI.replace("ipfs://", "https://gateway.ipfscdn.io/ipfs/")
             setImageURI(imageURIURL)
             setTokenName(tokenURIResponse.name)
             setTokenDescription(tokenURIResponse.description)
