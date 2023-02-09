@@ -6,6 +6,7 @@ import Image from "next/image"
 import { Card, useNotification } from "web3uikit"
 import { ethers } from "ethers"
 import UpdateListingModal from "./UpdateListingModal"
+import optimizedImage from "next/optimized-images"
 
 const truncateStr = (fullStr, strLen) => {
     if (fullStr.length <= strLen) return fullStr
@@ -99,6 +100,8 @@ export default function NFTBox({ price, nftAddress, tokenId, marketplaceAddress,
             position: "topR",
         })
     }
+
+    const Image = optimizedImage(({ src, ...props }) => <img src={src} {...props} />)
 
     return (
         <div className="m-2">
