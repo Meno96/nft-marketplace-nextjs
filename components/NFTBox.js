@@ -6,7 +6,6 @@ import Image from "next/image"
 import { Card, useNotification } from "web3uikit"
 import { ethers } from "ethers"
 import UpdateListingModal from "./UpdateListingModal"
-import { Skeleton } from "antd"
 
 const truncateStr = (fullStr, strLen) => {
     if (fullStr.length <= strLen) return fullStr
@@ -65,7 +64,6 @@ export default function NFTBox({ price, nftAddress, tokenId, marketplaceAddress,
             setImageURI(imageURIURL)
             setTokenName(tokenURIResponse.name)
             setTokenDescription(tokenURIResponse.description)
-            setIsURILoaded(true)
             // We could render the Image on our sever, and just call our sever.
             // For testnets & mainnet -> use moralis server hooks
             // Have the world adopt IPFS
@@ -126,23 +124,12 @@ export default function NFTBox({ price, nftAddress, tokenId, marketplaceAddress,
                                     <div className="italic text-sm">
                                         Owned by {formattedSellerAddress}
                                     </div>
-                                    <div className="image">
-                                        {imageURI ? (
-                                            <Image
-                                                loader={() => imageURI}
-                                                src={imageURI}
-                                                height="200"
-                                                width="200"
-                                            />
-                                        ) : (
-                                            <Skeleton.Image
-                                                style={{ width: 300, height: 300 }}
-                                                loading={!isURILoaded}
-                                                active
-                                                className="nft-skeleton"
-                                            />
-                                        )}
-                                    </div>
+                                    <Image
+                                        loader={() => imageURI}
+                                        src={imageURI}
+                                        height="200"
+                                        width="200"
+                                    />
                                     <div className="font-bold">
                                         {ethers.utils.formatUnits(price, "ether")} ETH
                                     </div>
