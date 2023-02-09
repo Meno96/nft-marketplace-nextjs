@@ -48,7 +48,8 @@
     @apply dark:border-gray-700 !important;
 }
 
-.sc-lbVpMG.iqURqo {
+// Connect button
+.sc-ilhmMj.lhJPzO {
     @apply transition !important;
     @apply duration-700 !important;
     @apply dark:bg-slate-800 !important;
